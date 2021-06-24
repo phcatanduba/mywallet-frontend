@@ -1,15 +1,32 @@
 import styled from 'styled-components';
 
-export default function LoginInputs() {
+export default function LoginInputs({ emailArray, passwordArray }) {
+    const [email, setEmail] = emailArray;
+    const [password, setPassword] = passwordArray;
     return (
         <Inputs>
-            <input placeholder="E-mail"></input>
-            <input placeholder="Senha"></input>
+            <input
+                placeholder="E-mail"
+                autoComplete="username"
+                value={email}
+                onChange={(e) => {
+                    setEmail(e.target.value);
+                }}
+            ></input>
+            <input
+                type="password"
+                placeholder="Senha"
+                autoComplete="new-password"
+                value={password}
+                onChange={(e) => {
+                    setPassword(e.target.value);
+                }}
+            ></input>
         </Inputs>
     );
 }
 
-const Inputs = styled.div`
+const Inputs = styled.form`
     display: flex;
     flex-direction: column;
     width: 100%;

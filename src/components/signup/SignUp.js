@@ -5,15 +5,16 @@ import Redirect from '../Redirect';
 import RegisterInputs from './RegisterInputs';
 import { useState } from 'react';
 import axios from 'axios';
+import { useHistory } from 'react-router-dom';
 
 export default function SignUp() {
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [confirmPass, setConfirmPass] = useState('');
-
     const infos = [name, email, password, confirmPass];
     const setInfos = [setName, setEmail, setPassword, setConfirmPass];
+    let history = useHistory();
 
     function checkPassword(password, confirmPass) {
         if (password === confirmPass) {
@@ -25,10 +26,13 @@ export default function SignUp() {
 
     function registerRequest() {
         if (checkPassword) {
-            const promise = axios.post('http://localhost:4000/signup', {
+            const promise = axios.post('http://localhost:4000/sign-up', {
                 name,
                 email,
                 password,
+            });
+            promise.then((res) => {
+                history.push('/');
             });
         } else {
             alert('SENHAS NAO COINCIDEM');
