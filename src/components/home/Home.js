@@ -106,7 +106,7 @@ export default function Home() {
                 <div className={'total-box'}>
                     <div className={'total'}>SALDO</div>
                     <div className={total > 0 ? 'credit' : 'debit'}>
-                        {total}
+                        {total / 100}
                     </div>
                 </div>
             </Balance>
