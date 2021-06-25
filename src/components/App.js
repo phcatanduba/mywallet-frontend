@@ -1,5 +1,5 @@
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
-import styled from 'styled-components';
+import { createGlobalStyle } from 'styled-components';
 import SignIn from './login/SignIn';
 import SignUp from './signup/SignUp';
 import Home from './home/Home';
@@ -33,19 +33,13 @@ export default function App() {
     );
 }
 
-const GeneralStyles = styled.div`
-    * {
-        margin: 0;
-        padding: 0;
-        border: 0;
-        font-size: 100%;
-        font: inherit;
-        color: inherit;
-        vertical-align: baseline;
-        box-sizing: border-box;
-        text-decoration: none;
-    }
+const GeneralStyles = createGlobalStyle`
     body {
         font-family: 'Raleway', sans-serif;
     }
+    * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
 `;
