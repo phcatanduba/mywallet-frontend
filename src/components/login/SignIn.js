@@ -31,8 +31,8 @@ export default function SignIn() {
         });
         promise.then((res) => {
             user.setInfos(res.data);
-            history.push('/home');
             localStorage.setItem('userInfo', JSON.stringify(res.data));
+            history.push('/home');
         });
 
         promise.catch(({ response }) => {

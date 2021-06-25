@@ -12,4 +12,5 @@ export default function Redirect({ text, page }) {
 const TextRedirect = styled.div`
     color: #fff;
     font-size: 15px;
+    font-weight: bold;
 `;
