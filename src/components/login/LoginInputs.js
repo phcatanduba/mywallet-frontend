@@ -1,10 +1,16 @@
 import styled from 'styled-components';
 
-export default function LoginInputs({ emailArray, passwordArray }) {
+export default function LoginInputs({ emailArray, passwordArray, login }) {
     const [email, setEmail] = emailArray;
     const [password, setPassword] = passwordArray;
     return (
-        <Inputs>
+        <Inputs
+            onKeyDown={(e) => {
+                if (e.key === 'Enter') {
+                    login(email, password);
+                }
+            }}
+        >
             <input
                 placeholder="E-mail"
                 autoComplete="username"

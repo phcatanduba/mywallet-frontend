@@ -24,7 +24,7 @@ export default function SignUp() {
         }
     }
 
-    function registerRequest() {
+    function registerRequest(name, email, password) {
         if (checkPassword) {
             const promise = axios.post('http://localhost:4000/sign-up', {
                 name,
@@ -41,8 +41,18 @@ export default function SignUp() {
     return (
         <Container>
             <Title title="My Wallet" />
-            <RegisterInputs infos={infos} setInfos={setInfos} />
-            <Button onClick={registerRequest}>Cadastrar</Button>
+            <RegisterInputs
+                infos={infos}
+                setInfos={setInfos}
+                signup={registerRequest}
+            />
+            <Button
+                onClick={() => {
+                    registerRequest(name, email, password);
+                }}
+            >
+                Cadastrar
+            </Button>
             <Redirect text="Já tem uma conta? Entre agora!" page="/" />
         </Container>
     );

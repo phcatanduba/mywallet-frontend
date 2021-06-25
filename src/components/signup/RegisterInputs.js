@@ -1,11 +1,17 @@
 import styled from 'styled-components';
 
-export default function LoginInputs({ infos, setInfos }) {
+export default function LoginInputs({ infos, setInfos, signup }) {
     const [name, email, password, confirmPass] = infos;
     const [setName, setEmail, setPassword, setConfirmPass] = setInfos;
 
     return (
-        <Inputs>
+        <Inputs
+            onKeyDown={(e) => {
+                if (e.key === 'Enter') {
+                    signup(name, email, password);
+                }
+            }}
+        >
             <input
                 placeholder="Nome"
                 value={name}
